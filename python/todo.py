@@ -26,6 +26,19 @@ def list_tasks():
 
 
 def remove_task(index):
+    with open(TASK_FILE, "r", encoding="utf-8") as file:
+        tasks = file.readlines()
+        if index == 0 or index > len(tasks):
+            return 
+        print(tasks)
+        del tasks[index - 1]
+        print(tasks)
+        
+    with open(TASK_FILE, "w", encoding="utf-8") as file:
+        for task in tasks:
+            file.write(f"{task.strip()}\n") 
+
+
     return
 
 def main():
