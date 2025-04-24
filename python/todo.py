@@ -1,6 +1,7 @@
 import argparse
 import os
 
+
 TASK_FILE = ".tasks.txt"
 
 def add_task(task):
@@ -11,7 +12,17 @@ def add_task(task):
     """
 
 def list_tasks():
-    return
+    
+    with open(TASK_FILE, "r", encoding="utf-8") as file:
+        tasks = file.readlines()
+        counter = 1
+        output_string = ""
+        for task in tasks:
+            output_string = output_string + str(counter) + ". "+task
+            counter = counter + 1
+        output_string = output_string.rstrip('\n')
+    
+    return output_string
 
 
 def remove_task(index):
