@@ -5,6 +5,10 @@ import os
 TASK_FILE = ".tasks.txt"
 
 def add_task(task):
+    with open(TASK_FILE, "a", encoding="utf-8") as file:
+        file.write(task + "\n")
+    return
+        
     """Function: add_task
     
     Input - a task to add to the list
@@ -12,7 +16,6 @@ def add_task(task):
     """
 
 def list_tasks():
-    
     with open(TASK_FILE, "r", encoding="utf-8") as file:
         tasks = file.readlines()
         counter = 1
@@ -30,9 +33,7 @@ def remove_task(index):
         tasks = file.readlines()
         if index == 0 or index > len(tasks):
             return 
-        print(tasks)
         del tasks[index - 1]
-        print(tasks)
         
     with open(TASK_FILE, "w", encoding="utf-8") as file:
         for task in tasks:
